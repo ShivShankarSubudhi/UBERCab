@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="css/style.css">
+<body ng-app="cab">
+
+    <div class="w3-col l12" ng-controller="CabCtrl">
+        <div class="w3-container w3-brown">
+          <h2>Cab Booking Request</h2>
+        </div>
+        <form class="w3-container" novalidate   method="post" ng-submit="booking.addRequest()">
+
+            <p>
+                <label class="w3-label w3-text-brown"><b>Source</b></label>
+                <input class="w3-input w3-border w3-sand" name="source" id="source" type="text" ng-model="booking.source" placeholder="Enter Latitude,Longitude" required>
+            </p>
+
+            <p>
+                <label class="w3-label w3-text-brown"><b>Destination</b></label>
+                <input class="w3-input w3-border w3-sand" name="destination" id="destination" type="text" ng-model="booking.destination" placeholder="Enter Latitude,Longitude" required>
+            </p>
+            <p class="w3-col l12">
+                <label class="w3-label w3-text-brown w3-col l12"><b>Time</b></label>
+                <input class="w3-input w3-border w3-sand w3-col l1 width50" name="hour" ng-model = "booking.time.hour" id="hour" type="number"  min="0" max="23" required>
+                <input class="w3-input w3-border w3-sand w3-col l1 width50 mar-left15" ng-model = "booking.time.minute" name="last" type="number"  min="0" max="59" required>
+            </p>
+            <p>
+                <label class="w3-label w3-text-brown"><b>Email</b></label>
+                <input class="w3-input w3-border w3-sand" name="last" type="text" ng-model="booking.email">
+            </p>
+            <p>
+                <button class="w3-btn w3-brown" type="submit" value="submit">BOOK</button>
+            </p>
+
+        </form>
+        <div class="w3-container">
+            <div class="w3-col-l12">
+                <div class="w3-panel w3-green w3-round-large" ng-repeat = "log in booking.logs">
+                        <p>At <span ng-bind="log.time"></span>&nbsp;<span ng-bind="log.api"></span>&nbsp;API called for <span ng-bind="log.user"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+
+</body>
+</html>
